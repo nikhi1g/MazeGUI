@@ -1,0 +1,16 @@
+<PlayScreen>:
+    on_enter: root.enter()
+
+
+    name: 'play'
+    FloatLayout:
+        size_hint: None, None
+
+    DPEAButton:
+        id: test_button
+        text: 'To TypeScreen'
+        size: 100, 100
+        x: root.width * 0.25
+        y: root.height * 0.5
+        color: 0, 0, 0, 1
+        on_press: root.transition()

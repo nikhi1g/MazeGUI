@@ -1,0 +1,15 @@
+<LeaderboardScreen>:
+    on_enter: root.enter()
+
+    name: 'leader'
+    FloatLayout:
+        size_hint: None, None
+
+    DPEAButton:
+        id: test_button
+        text: 'To StartScreen'
+        size: 100, 100
+        x: root.width * 0.75
+        y: root.height * 0.1
+        color: 0, 0, 0, 1
+        on_press: root.transition()
