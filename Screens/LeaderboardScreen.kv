@@ -1,15 +1,17 @@
 <LeaderboardScreen>:
+    #from kivy.clock import Clock
     on_enter: root.enter()
+    #on_enter: Clock.schedule_once(self.enter, 3)
+
+    leaderboard: leaderboard
 
     name: 'leader'
     FloatLayout:
         size_hint: None, None
 
-    DPEAButton:
-        id: test_button
+    Label:
+        id: leaderboard
         text: 'To StartScreen'
         size: 100, 100
-        x: root.width * 0.75
-        y: root.height * 0.1
-        color: 0, 0, 0, 1
-        on_press: root.transition()
+        pos_hint:{"x":0,"y": 0}
+        color: 0.3, 0.3, 0.3, 1
