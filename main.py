@@ -30,7 +30,7 @@ class MazeGUI(App):
         return SCREEN_MANAGER
 
 
-Window.clearcolor = (0, 0, 0, 1)  # White
+Window.clearcolor = (0, 0, 0, 1)  # black
 
 
 class StartScreen(Screen):
@@ -111,7 +111,7 @@ class TypeScreen(Screen):
         self.set_keyboard_keys()
 
     def set_keyboard_keys(self):
-        MainObjectList = [self.q1, self.w1, self.e1, self.r1, self.t1, self.y1, self.u1, self.i1, self.o1, self.p1,
+        KeyboardObjectList = [self.q1, self.w1, self.e1, self.r1, self.t1, self.y1, self.u1, self.i1, self.o1, self.p1,
                           self.a1, self.s1, self.d1, self.f1, self.g1, self.h1, self.j1, self.k1, self.l1, self.space,
                           self.z1, self.x1, self.c1, self.v1, self.b1, self.n1, self.m1, self.star, self.dash,
                           self.delete, self.enterKey]
@@ -120,7 +120,7 @@ class TypeScreen(Screen):
         x_offset = 0
         y_offset = 0
         button_count = 0
-        for btn in MainObjectList:
+        for btn in KeyboardObjectList:
 
             btn.pos_hint = {"x": .02 + x_offset, "y": .55 + y_offset}
             button_count += 1
@@ -140,7 +140,8 @@ class TypeScreen(Screen):
         self.nickname.text += button.text
 
     def Delete_Key_Update(self):
-        if len(self.nickname.text) > 0: self.nickname.text = self.nickname.text[:-1]
+        if len(self.nickname.text) > 0:
+            self.nickname.text = self.nickname.text[:-1]
 
     def Enter_Key_Update(self):
         if len(self.nickname.text) >= 1 and ":" not in self.nickname.text:
@@ -160,6 +161,7 @@ class LeaderboardScreen(Screen):
 
     def enter(self):
         self.score_update()
+
     def score_update(self):
         scores = []
         names = []
@@ -176,13 +178,14 @@ class LeaderboardScreen(Screen):
         with open("leaderboard.txt", "r") as f:
             leader_length = len(f.readlines())
 
-        while count < leader_length:
+        while count < leader_length and count <= 10:
             score_board += str(count) + ".        " + pairs[count][0] + " " + pairs[count][1] + "\n"
             count += 1
 
         self.leaderboard.text = score_board
         Clock.schedule_once(self.transition, 5)
         # that took way too long
+
     def transition(self, dt):
         SCREEN_MANAGER.current = START_SCREEN_NAME
 
